@@ -1,0 +1,45 @@
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  width: 6rem;
+}
+
+.mini-logo {
+  width: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 7rem;
+  }
+}
+
+.inf-slide {
+  animation: infslide 20s infinite linear;
+}
+
+@keyframes infslide {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -1320px;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}

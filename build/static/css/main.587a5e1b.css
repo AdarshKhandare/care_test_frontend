@@ -1,0 +1,2 @@
+html{scroll-behavior:smooth}a{color:inherit;text-decoration:none}.logo{width:6rem}.mini-logo{width:3rem}@media only screen and (max-width:600px){.logo{width:7rem}}.inf-slide{-webkit-animation:infslide 20s linear infinite;animation:infslide 20s linear infinite}@-webkit-keyframes infslide{0%{margin-left:0}to{margin-left:-1320px}}@keyframes infslide{0%{margin-left:0}to{margin-left:-1320px}}::-webkit-scrollbar{height:.5em;width:.5em}::-webkit-scrollbar-thumb{background-color:hsla(0,0%,100%,.1);border-radius:10px}
+/*# sourceMappingURL=main.587a5e1b.css.map*/
