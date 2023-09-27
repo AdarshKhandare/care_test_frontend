@@ -1,70 +1,125 @@
-import { IconButton } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
-
 const Header = () => {
   const [menu, setMenu] = useState(false);
   return (
-    <header className="header-section">
-      <div className="container">
-        <div className="row align-items-center">
-          <div className="col-lg-4 col-md-4 col-12">
-            <div className="header-menu-wrap">
-              <ul className="d-none d-lg-flex">
-                <li>
-                  <Link to="/#">Contact Us</Link>
-                </li>
-                <li>
-                  <Link to="/#">FAQs</Link>
-                </li>
-                <li>
-                  <Link to="/#">Terms</Link>
-                </li>
-                <li>
-                  <Link to="/#">Privacy</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-4 col-5">
-            <div className="header-logo">
-              <Link to="/">
-                <img
-                  src="https://www.carejar.in/assets/images/logo.png"
-                  alt="Logo"
-                  className="img-fluid "
-                  style={{ width: "80px" }}
-                />
-              </Link>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-4 col-7">
-            <div className="header-bttn">
-              <form className="d-flex">
-                <Link to="/#">Log In</Link>
-                <Link to="/#">
-                  Get Started <i className="fa fa-angle-right"></i>
-                </Link>
-              </form>
-            </div>
-          </div>
-        </div>
-        <IconButton
-          color="inherit"
-          edge="start"
-          onClick={() => setMenu(true)}
-          size="small"
+    <header
+      style={{
+        padding: "1rem 1.5rem",
+        paddingBottom: "1rem",
+        borderBottom: "1px solid rgba(5, 148, 251, 0.1)",
+        backgroundColor: " #282828",
+        color: "#fff",
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid
+          item
+          xs={4}
+          sx={{ alignItems: "center", textAlign: "center", marginTop: "10px" }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          >
+            <Typography
+              sx={{ minWidth: 70, cursor: "pointer" }}
+              variant="h6"
+              color="#fff"
+            >
+              Contact
+            </Typography>
+            <Typography
+              sx={{ minWidth: 70, cursor: "pointer" }}
+              variant="h6"
+              color="#fff"
+            >
+              FAQs
+            </Typography>
+            <Typography
+              sx={{ minWidth: 70, cursor: "pointer" }}
+              variant="h6"
+              color="#fff"
+            >
+              Terms
+            </Typography>
+            <Typography
+              sx={{ minWidth: 70, cursor: "pointer" }}
+              variant="h6"
+              color="#fff"
+            >
+              Privacy
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={4}
           sx={{
-            mr: 1,
-            display: { xs: "flex", sm: "none" },
-            bgcolor: "#fff",
-            border: "1px solid #e0e0e0",
+            alignItems: "center",
+            textAlign: "center",
           }}
         >
-          <ChevronRightRoundedIcon />
-        </IconButton>
-      </div>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              textAlign: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Link to="/">
+              <img
+                src="https://www.carejar.in/assets/images/logo.png"
+                alt="Logo"
+                style={{ width: "80px" }}
+              />
+            </Link>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={4}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            textAlign: "center",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Button variant="contained" size="large">
+            Get Started
+          </Button>
+        </Grid>
+      </Grid>
+
+      <IconButton
+        color="inherit"
+        edge="start"
+        onClick={() => setMenu(true)}
+        size="small"
+        sx={{
+          mr: 1,
+          display: { xs: "flex", sm: "none" },
+          bgcolor: "#fff",
+          border: "1px solid #e0e0e0",
+        }}
+      >
+        <ChevronRightRoundedIcon />
+      </IconButton>
+
       <div
         onClick={(e) => {
           if (e.target === e.currentTarget) {
@@ -92,17 +147,17 @@ const Header = () => {
           className="shadow-lg bg-white d-flex d-lg-none p-4 fs-5 fw-semibold"
         >
           <ul className="d-flex flex-column gap-3">
-            <li>
-              <a href="/#pricing-sec">Pricing</a>
+            <li onClick={() => setMenu(false)}>
+              <Link to="/#">Contact</Link>
             </li>
             <li onClick={() => setMenu(false)}>
-              <Link to="/faq">FAQs</Link>
+              <Link to="/#">FAQs</Link>
             </li>
             <li onClick={() => setMenu(false)}>
-              <Link to="/terms">Terms</Link>
+              <Link to="/#">Terms</Link>
             </li>
             <li onClick={() => setMenu(false)}>
-              <Link to="/terms">Privacy</Link>
+              <Link to="/#">Privacy</Link>
             </li>
           </ul>
         </div>

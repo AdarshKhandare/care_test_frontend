@@ -5,7 +5,7 @@ import DoctorsCard from "../components/landing/DoctorsCard";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import env from "../config/env";
-
+import { Container, Grid, Typography } from "@mui/material";
 const DoctorsList = () => {
   const { id } = useParams();
   let createString = id.split("-");
@@ -18,7 +18,7 @@ const DoctorsList = () => {
   const getPricing = async () => {
     setLoading(true);
     await axios
-      .get("http://localhost:3000/api/v1/doctors/read")
+      .get(env.BASE_API_URL + "/api/v1/doctors/read")
       .then((res) => {
         setDoctors(res.data.fakeDoctors);
         setLoading(false);
@@ -32,33 +32,31 @@ const DoctorsList = () => {
     getPricing();
   }, [id]);
   return (
-    <div>
+    <>
       {/* header section @S  */}
       <Header />
       {/*header section @E */}
-      <section className=" pa-y4">
+      <Container sx={{ padding: " 2rem 0" }}>
         <LoadingContainer loading={loading}>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <span className="text-muted h5">
-                  All Available {finalString}
-                </span>
-              </div>
-              <div className="col-lg-12 mt-2">
-                {doctors?.map((doctor) => (
-                  <DoctorsCard
-                    key={doctor.name}
-                    data={doctor}
-                    profession={finalString}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          <Grid container spacing={2} sx={{ marginBottom: "10px" }}>
+            <Grid item xs={12}>
+              <Typography variant="h5" sx={{ fontWeight: "600" }}>
+                All Available {finalString}
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              {doctors?.map((doctor) => (
+                <DoctorsCard
+                  key={doctor.name}
+                  data={doctor}
+                  profession={finalString}
+                />
+              ))}
+            </Grid>
+          </Grid>
         </LoadingContainer>
-      </section>
-    </div>
+      </Container>
+    </>
   );
 };
 

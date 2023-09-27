@@ -4,43 +4,43 @@ import Header from "../components/landing/Header";
 
 import Clinics from "../components/landing/Clinics";
 import { clinics } from "../utilities/DummyData";
-
+import { Container, Grid, ImageList, Typography } from "@mui/material";
 const Landing = () => {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
   return (
-    <div>
+    <>
       {/* header section @S  */}
       <Header />
       {/*header section @E */}
 
       {/*Clinic Types start */}
-      <section className=" pa-y4">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <h6>Book an appointment for an in-clinic consultation</h6>
-              <p className="mt-2">
-                Find experienced doctors across all specilties
-              </p>
-            </div>
-          </div>
+      <Container sx={{ padding: " 2rem 0" }}>
+        <Grid container spacing={2} sx={{ marginBottom: "10px" }}>
+          <Grid item xs={12}>
+            <Typography variant="h5" sx={{ fontWeight: "650" }}>
+              Book an appointment for an in-clinic consultation
+            </Typography>
+            <Typography variant="subtitle1">
+              Find experienced doctors across all specilties
+            </Typography>
+          </Grid>
+        </Grid>
 
-          <div className="row justify-content-between mt-4">
-            {clinics.map((clinic) => (
-              <Clinics
-                key={clinic.heading}
-                image={clinic.image}
-                heading={clinic.heading}
-                text={clinic.text}
-                onClick={(clinicName) => navigate(`/clinics/${clinicName}`)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+        <Grid container spacing={2}>
+          {clinics.map((clinic) => (
+            <Clinics
+              key={clinic.heading}
+              image={clinic.image}
+              heading={clinic.heading}
+              text={clinic.text}
+              onClick={(clinicName) => navigate(`/clinics/${clinicName}`)}
+            />
+          ))}
+        </Grid>
+      </Container>
       {/*Clinic Types end */}
-    </div>
+    </>
   );
 };
 

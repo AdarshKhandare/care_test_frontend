@@ -1,16 +1,29 @@
-import { Badge, Chip, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
-
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 const DoctorsCard = ({ profession, data }) => {
   return (
-    <div className="card rounded p-2 mb-2" style={{ width: "70%" }}>
-      <div className="row">
-        <div className="col-3 text-center d-flex justify-content-center align-items-center ">
-          <div style={{ width: "150px", height: "150px" }}>
+    <Card
+      variant="outlined"
+      sx={{ maxWidth: "70%", marginBottom: "10px", padding: " 1rem " }}
+    >
+      <Grid container spacing={2} sx={{ marginBottom: "10px" }}>
+        <Grid
+          item
+          xs={3}
+          fullWidth={true}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          <Box sx={{ width: "150px", height: "150px" }}>
             <img
               src={data.image}
               alt={data.name}
-              className="img-fluid rounded-circle"
               style={{
                 width: "100%",
                 height: "100%",
@@ -18,33 +31,73 @@ const DoctorsCard = ({ profession, data }) => {
                 borderRadius: "50%",
               }}
             />
-          </div>
-        </div>
-        <div className="col-6">
-          <div className="d-flex flex-column gap-1">
-            <span className="h5 text-primary mb-0">{data.name}</span>
-            <span className=" text-muted">{profession}</span>
-            <span className=" text-muted mb-0">
+          </Box>
+        </Grid>
+        <Grid item xs={6} fullWidth={true}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography variant="h6" color="primary" sx={{ fontWeight: "600" }}>
+              {data.name}
+            </Typography>
+            <Typography variant="subtitle1" sx={{ fontWeight: "300" }}>
+              {profession}
+            </Typography>
+            <Typography variant="subtitle1" sx={{ fontWeight: "300" }}>
               {data.experience} years experience overall
-            </span>
-            <div className="mt-0">
-              <span className="h6 fw-600">{data.cityState}</span>{" "}
-              <span className="h3 text-center align-items-center ms-1">.</span>
-              <span className=" text-muted ms-1">{data.clinic}</span>
-            </div>
-            <span className=" text-muted">
+            </Typography>
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{
+                textAlign: "center",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                variant="subtitle1"
+                sx={{ fontWeight: "550", textWrap: "nowrap" }}
+              >
+                {data.cityState}
+              </Typography>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: "550",
+                  textAlign: "center",
+                  alignItems: "center",
+                }}
+              >
+                .
+              </Typography>
+              <Typography variant="subtitle1" sx={{ textWrap: "nowrap" }}>
+                {data.clinic}
+              </Typography>
+            </Stack>
+
+            <Typography variant="subtitle1" sx={{ fontWeight: "300" }}>
               {" "}
               {data.fees} Consultation fee at clinic
-            </span>
-            <div className="d-flex gap-5 mt-3 mb-2">
-              <button
-                type="button"
-                class="btn btn-sm btn-success"
-                style={{ cursor: "not-allowed" }}
+            </Typography>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                textAlign: "center",
+                alignItems: "center",
+                marginTop: "10px",
+              }}
+            >
+              <Button
+                variant="contained"
+                size="small"
+                sx={{
+                  pointerEvents: "none",
+                  color: "#fff",
+                  backgroundColor: "#00a500",
+                }}
+                startIcon={<ThumbUpOffAltIcon />}
               >
-                <i className="fa fa-thumbs-up"></i>{" "}
                 {data.patientsReviewPercentage} %
-              </button>
+              </Button>
 
               <span
                 style={{
@@ -55,23 +108,71 @@ const DoctorsCard = ({ profession, data }) => {
               >
                 {data.patientsTreated} Patients Stories
               </span>
-            </div>
-          </div>
-        </div>
-        <div className="col-3 d-flex flex-column justify-content-end">
-          <div className="text-center">
-            <span className="text-success ">
-              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>{" "}
-              Available Today
-            </span>
-            <button className=" w-100 btn btn-sm btn-primary d-flex flex-column text-center align-items-center mt-2 mb-2">
-              <span>Book Appointment</span>
-              <span>No Booking Fee </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Stack>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={3}
+          fullWidth={true}
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "end",
+              alignItems: "center",
+              gap: 1,
+              width: "100%",
+            }}
+          >
+            <Box
+              sx={{
+                color: "#00a500",
+                display: "flex",
+                gap: 1,
+                textAlign: "center",
+                alignItems: "center",
+              }}
+            >
+              <CalendarMonthIcon />
+              <Typography variant="body2"> Available Today</Typography>
+            </Box>
+            <Button
+              color="primary"
+              variant="contained"
+              fullWidth
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
+                gap: 0,
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                variant="body1"
+                sx={{ fontWeight: "600" }}
+                color="#fff"
+              >
+                Book Appointment
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                sx={{ fontWeight: "400" }}
+                color="#fff"
+              >
+                No Booking Fee{" "}
+              </Typography>
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
+    </Card>
   );
 };
 
